@@ -3,7 +3,7 @@
   "id": "sample-industrial-tour",
   "name": "Industrial Facility Demo",
   "createdAt": "2026-07-16T00:00:00.000Z",
-  "updatedAt": "2026-07-28T02:49:49.759Z",
+  "updatedAt": "2026-07-29T17:48:40.649Z",
   "areas": [
     {
       "id": "area-entrance",
@@ -41,52 +41,52 @@
       "relativePath": "images/lab.jpg"
     },
     {
-      "id": "asset-panorama-77395a2d-ed1b-4129-a658-42305900b1a6",
+      "id": "asset-panorama-ae2a0c36-75b0-4d6f-9a9c-bbfe1babb9bf",
       "name": "photo360 vr.JPG",
       "kind": "panorama",
-      "relativePath": "assets/asset-panorama-77395a2d-ed1b-4129-a658-42305900b1a6-photo360 vr.JPG",
+      "relativePath": "assets/asset-panorama-ae2a0c36-75b0-4d6f-9a9c-bbfe1babb9bf-photo360 vr.JPG",
       "mimeType": "image/jpeg",
       "sizeBytes": 5375973
     },
     {
-      "id": "asset-panorama-7d876be6-bfc4-4581-a3e0-82c5b9ba528a",
-      "name": "Samsung.png",
-      "kind": "panorama",
-      "relativePath": "assets/asset-panorama-7d876be6-bfc4-4581-a3e0-82c5b9ba528a-Samsung.png",
-      "mimeType": "image/png",
-      "sizeBytes": 2141379
-    },
-    {
-      "id": "asset-object-9f831a8f-a7b7-48ce-b3bf-da08dd94f110",
+      "id": "asset-object-760898e8-7ee2-49c1-9b99-2344adaa2fb8",
       "name": "oculus_quest_3.glb",
       "kind": "object",
-      "relativePath": "assets/asset-object-9f831a8f-a7b7-48ce-b3bf-da08dd94f110-oculus_quest_3.glb",
+      "relativePath": "assets/asset-object-760898e8-7ee2-49c1-9b99-2344adaa2fb8-oculus_quest_3.glb",
       "mimeType": "application/octet-stream",
       "sizeBytes": 6911188
     },
     {
-      "id": "asset-object-c76ce5d6-ef9b-4985-9e43-c473047e2cac",
+      "id": "asset-object-efde37be-5c86-4f29-83cc-9db8d10c4780",
       "name": "qled-tv-exploded (3).glb",
       "kind": "object",
-      "relativePath": "assets/asset-object-c76ce5d6-ef9b-4985-9e43-c473047e2cac-qled-tv-exploded (3).glb",
+      "relativePath": "assets/asset-object-efde37be-5c86-4f29-83cc-9db8d10c4780-qled-tv-exploded (3).glb",
       "mimeType": "application/octet-stream",
       "sizeBytes": 374680
+    },
+    {
+      "id": "asset-panorama-cbc3e533-fa51-411b-9b28-b70bc3ff4202",
+      "name": "Samsung.png",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-cbc3e533-fa51-411b-9b28-b70bc3ff4202-Samsung.png",
+      "mimeType": "image/png",
+      "sizeBytes": 2141379
     }
   ],
   "scenes": [
     {
-      "id": "scene-30d15e82-b362-41aa-b2b2-cb7c51fc3f52",
-      "name": "photo360 vr",
+      "id": "scene-0fd24cfa-f315-49f2-98dd-0a7bd966390f",
+      "name": "Lab",
       "areaId": "area-entrance",
-      "panoramaAssetId": "asset-panorama-77395a2d-ed1b-4129-a658-42305900b1a6",
+      "panoramaAssetId": "asset-panorama-ae2a0c36-75b0-4d6f-9a9c-bbfe1babb9bf",
       "initialView": {
-        "yaw": -169.58318622333465,
-        "pitch": 1.0141756333671912,
+        "yaw": -127.48874307204035,
+        "pitch": -15.24830447662451,
         "fov": 75
       },
       "hotspots": [
         {
-          "id": "hotspot-1ec4515f-6e73-44c7-ba51-5e3aeb628787",
+          "id": "hotspot-719a1b9b-9076-4900-ba29-00c0fe056cb9",
           "type": "text",
           "label": "Wall text",
           "text": "Festo",
@@ -95,89 +95,76 @@
           "textColor": "#60a5fa",
           "textAlign": "center",
           "position": {
-            "yaw": 180,
-            "pitch": 9
+            "yaw": 175,
+            "pitch": 12
           },
           "iconSize": 44,
           "labelMode": "hidden"
         },
         {
-          "id": "hotspot-edbb9c5b-55ee-4fa9-a741-a48b6f1a0d77",
+          "id": "hotspot-56d9ed36-0c4d-4351-9f63-3fb9c0138ae3",
           "type": "info",
-          "label": "Meta",
-          "title": "Meta",
-          "description": "Meta quest 3 VR headset",
+          "label": "Information",
+          "title": "Information",
+          "description": "Add a short visitor note for this point of interest.",
           "position": {
             "yaw": -141,
-            "pitch": -9
+            "pitch": -10
           },
           "iconSize": 24,
-          "objectAssetId": "asset-object-9f831a8f-a7b7-48ce-b3bf-da08dd94f110",
+          "objectAssetId": "asset-object-760898e8-7ee2-49c1-9b99-2344adaa2fb8",
           "aiFacts": [
-            "This is the Meta Quest 3, an advanced virtual reality headset designed for immersive 3D experiences.",
-            "It features high-resolution displays, improved graphics and clear pancake lenses for sharper visuals.",
-            "Its colour passthrough cameras allow users to combine virtual objects with the real environment.",
-            "The wireless controllers and accurate hand tracking make interaction smooth and natural.",
-            "It can be used for gaming, training, virtual tours, product demonstrations and educational experiences."
-          ],
-          "iconColor": "#74d8ec"
-        },
-        {
-          "id": "hotspot-10a549a4-5e6e-4fa7-ba82-f604f0cd810c",
-          "type": "object",
-          "label": "Samsung",
-          "title": "Samsung",
-          "description": "",
-          "assetId": "asset-object-c76ce5d6-ef9b-4985-9e43-c473047e2cac",
-          "position": {
-            "yaw": 92,
-            "pitch": 8
-          },
-          "iconSize": 24,
-          "aiFacts": [
-            "This Samsung TV is used to display a realistic and interactive 3D model of the product.",
-            "The model can be rotated, zoomed and explored from different viewing angles.",
-            "Users can separate the outer and internal components to understand the product’s structure.",
-            "This makes it easier to study how each part is designed, assembled and connected.",
-            "It provides a clear and engaging way to demonstrate products for training, education and presentations."
+            "this is meta quest3"
           ]
         },
         {
-          "id": "hotspot-08e61f7e-87f6-44ec-a193-9f9b043429a4",
+          "id": "hotspot-81f44a63-5ef7-41f9-9f39-ac726d7bca59",
+          "type": "object",
+          "label": "qled-tv-exploded (3)",
+          "title": "qled-tv-exploded (3)",
+          "description": "",
+          "assetId": "asset-object-efde37be-5c86-4f29-83cc-9db8d10c4780",
+          "position": {
+            "yaw": 116.39997594906316,
+            "pitch": 10.061365507920314
+          },
+          "iconSize": 24
+        },
+        {
+          "id": "hotspot-8eb9960e-8830-43d6-bde3-a97c38744e18",
           "type": "navigation",
-          "label": "Samsung",
+          "label": "Navigation",
           "position": {
             "yaw": -59,
             "pitch": -4
           },
           "iconSize": 24,
-          "targetSceneId": "scene-7b09ae86-607c-471e-bb41-7fffecfb8cba",
+          "targetSceneId": "scene-c3afa601-50d4-4ae4-bad0-b07b7e9ff219",
           "iconName": "pin"
         }
       ]
     },
     {
-      "id": "scene-7b09ae86-607c-471e-bb41-7fffecfb8cba",
+      "id": "scene-c3afa601-50d4-4ae4-bad0-b07b7e9ff219",
       "name": "Samsung",
       "areaId": "area-warehouse",
-      "panoramaAssetId": "asset-panorama-7d876be6-bfc4-4581-a3e0-82c5b9ba528a",
+      "panoramaAssetId": "asset-panorama-cbc3e533-fa51-411b-9b28-b70bc3ff4202",
       "initialView": {
-        "yaw": 0,
-        "pitch": 0,
+        "yaw": 49.957992115460506,
+        "pitch": -12.423844227972468,
         "fov": 75
       },
       "hotspots": [
         {
-          "id": "hotspot-3a2eac74-df2c-40e7-846e-8176302b86d8",
+          "id": "hotspot-aa22f990-7603-484c-838c-b2955e985186",
           "type": "navigation",
-          "label": "photo360 vr",
+          "label": "Lab",
           "position": {
-            "yaw": 26,
-            "pitch": -24
+            "yaw": 36,
+            "pitch": -25
           },
           "iconSize": 44,
-          "targetSceneId": "scene-30d15e82-b362-41aa-b2b2-cb7c51fc3f52",
-          "iconName": "pin"
+          "targetSceneId": "scene-0fd24cfa-f315-49f2-98dd-0a7bd966390f"
         }
       ]
     }
@@ -190,6 +177,6 @@
     "hotspotStyle": "circle"
   },
   "settings": {
-    "startSceneId": "scene-30d15e82-b362-41aa-b2b2-cb7c51fc3f52"
+    "startSceneId": "scene-c3afa601-50d4-4ae4-bad0-b07b7e9ff219"
   }
 }
