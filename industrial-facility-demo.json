@@ -3,7 +3,7 @@
   "id": "sample-industrial-tour",
   "name": "Industrial Facility Demo",
   "createdAt": "2026-07-16T00:00:00.000Z",
-  "updatedAt": "2026-07-29T17:48:40.649Z",
+  "updatedAt": "2026-07-30T18:21:26.251Z",
   "areas": [
     {
       "id": "area-entrance",
@@ -41,52 +41,85 @@
       "relativePath": "images/lab.jpg"
     },
     {
-      "id": "asset-panorama-ae2a0c36-75b0-4d6f-9a9c-bbfe1babb9bf",
+      "id": "asset-panorama-6fe2ab0d-d623-49f7-89e9-846e7a969c6c",
       "name": "photo360 vr.JPG",
       "kind": "panorama",
-      "relativePath": "assets/asset-panorama-ae2a0c36-75b0-4d6f-9a9c-bbfe1babb9bf-photo360 vr.JPG",
+      "relativePath": "assets/asset-panorama-6fe2ab0d-d623-49f7-89e9-846e7a969c6c-photo360 vr.JPG",
       "mimeType": "image/jpeg",
       "sizeBytes": 5375973
     },
     {
-      "id": "asset-object-760898e8-7ee2-49c1-9b99-2344adaa2fb8",
+      "id": "asset-panorama-4d1817cb-d729-4a70-8b13-d857941d4106",
+      "name": "Samsung.png",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-4d1817cb-d729-4a70-8b13-d857941d4106-Samsung.png",
+      "mimeType": "image/png",
+      "sizeBytes": 2141379
+    },
+    {
+      "id": "asset-object-c1e741ec-5799-4452-9afa-a108b97ad0b4",
       "name": "oculus_quest_3.glb",
       "kind": "object",
-      "relativePath": "assets/asset-object-760898e8-7ee2-49c1-9b99-2344adaa2fb8-oculus_quest_3.glb",
+      "relativePath": "assets/asset-object-c1e741ec-5799-4452-9afa-a108b97ad0b4-oculus_quest_3.glb",
       "mimeType": "application/octet-stream",
       "sizeBytes": 6911188
     },
     {
-      "id": "asset-object-efde37be-5c86-4f29-83cc-9db8d10c4780",
+      "id": "asset-object-6e3f8f35-c8d8-4016-bab1-019a3fd12d02",
       "name": "qled-tv-exploded (3).glb",
       "kind": "object",
-      "relativePath": "assets/asset-object-efde37be-5c86-4f29-83cc-9db8d10c4780-qled-tv-exploded (3).glb",
+      "relativePath": "assets/asset-object-6e3f8f35-c8d8-4016-bab1-019a3fd12d02-qled-tv-exploded (3).glb",
       "mimeType": "application/octet-stream",
       "sizeBytes": 374680
-    },
-    {
-      "id": "asset-panorama-cbc3e533-fa51-411b-9b28-b70bc3ff4202",
-      "name": "Samsung.png",
-      "kind": "panorama",
-      "relativePath": "assets/asset-panorama-cbc3e533-fa51-411b-9b28-b70bc3ff4202-Samsung.png",
-      "mimeType": "image/png",
-      "sizeBytes": 2141379
     }
   ],
   "scenes": [
     {
-      "id": "scene-0fd24cfa-f315-49f2-98dd-0a7bd966390f",
-      "name": "Lab",
+      "id": "scene-8f1b1474-dc39-45fe-bc35-2a96be1013b3",
+      "name": "photo360 vr",
       "areaId": "area-entrance",
-      "panoramaAssetId": "asset-panorama-ae2a0c36-75b0-4d6f-9a9c-bbfe1babb9bf",
+      "panoramaAssetId": "asset-panorama-6fe2ab0d-d623-49f7-89e9-846e7a969c6c",
       "initialView": {
-        "yaw": -127.48874307204035,
-        "pitch": -15.24830447662451,
+        "yaw": 173.64006783307815,
+        "pitch": -7.113858495857717,
         "fov": 75
       },
       "hotspots": [
         {
-          "id": "hotspot-719a1b9b-9076-4900-ba29-00c0fe056cb9",
+          "id": "hotspot-1a6ecf96-e543-469e-98f9-6f098f358654",
+          "type": "info",
+          "label": "Meta",
+          "title": "Meta",
+          "description": "Add a short visitor note for this point of interest.",
+          "position": {
+            "yaw": -141,
+            "pitch": -9
+          },
+          "iconSize": 24,
+          "iconName": "pin",
+          "objectAssetId": "asset-object-c1e741ec-5799-4452-9afa-a108b97ad0b4",
+          "aiFacts": [
+            "this is meta"
+          ]
+        },
+        {
+          "id": "hotspot-e7ff3fb8-5b8f-48ca-8fc1-f56ddcda5d09",
+          "type": "object",
+          "label": "TV",
+          "title": "TV",
+          "description": "",
+          "assetId": "asset-object-6e3f8f35-c8d8-4016-bab1-019a3fd12d02",
+          "position": {
+            "yaw": 155,
+            "pitch": 5
+          },
+          "iconSize": 24,
+          "aiFacts": [
+            "this is tv"
+          ]
+        },
+        {
+          "id": "hotspot-4bf50c25-fe76-4c59-920d-05d4b300fac5",
           "type": "text",
           "label": "Wall text",
           "text": "Festo",
@@ -95,78 +128,37 @@
           "textColor": "#60a5fa",
           "textAlign": "center",
           "position": {
-            "yaw": 175,
-            "pitch": 12
+            "yaw": -178,
+            "pitch": 11
           },
           "iconSize": 44,
           "labelMode": "hidden"
         },
         {
-          "id": "hotspot-56d9ed36-0c4d-4351-9f63-3fb9c0138ae3",
-          "type": "info",
-          "label": "Information",
-          "title": "Information",
-          "description": "Add a short visitor note for this point of interest.",
-          "position": {
-            "yaw": -141,
-            "pitch": -10
-          },
-          "iconSize": 24,
-          "objectAssetId": "asset-object-760898e8-7ee2-49c1-9b99-2344adaa2fb8",
-          "aiFacts": [
-            "this is meta quest3"
-          ]
-        },
-        {
-          "id": "hotspot-81f44a63-5ef7-41f9-9f39-ac726d7bca59",
-          "type": "object",
-          "label": "qled-tv-exploded (3)",
-          "title": "qled-tv-exploded (3)",
-          "description": "",
-          "assetId": "asset-object-efde37be-5c86-4f29-83cc-9db8d10c4780",
-          "position": {
-            "yaw": 116.39997594906316,
-            "pitch": 10.061365507920314
-          },
-          "iconSize": 24
-        },
-        {
-          "id": "hotspot-8eb9960e-8830-43d6-bde3-a97c38744e18",
+          "id": "hotspot-7a026711-3995-4409-8879-bc1120ada8c5",
           "type": "navigation",
-          "label": "Navigation",
+          "label": "Samsung",
           "position": {
             "yaw": -59,
             "pitch": -4
           },
-          "iconSize": 24,
-          "targetSceneId": "scene-c3afa601-50d4-4ae4-bad0-b07b7e9ff219",
+          "iconSize": 30,
+          "targetSceneId": "scene-1f04276d-52c7-4b4d-9933-8bf9082e9f7e",
           "iconName": "pin"
         }
       ]
     },
     {
-      "id": "scene-c3afa601-50d4-4ae4-bad0-b07b7e9ff219",
+      "id": "scene-1f04276d-52c7-4b4d-9933-8bf9082e9f7e",
       "name": "Samsung",
       "areaId": "area-warehouse",
-      "panoramaAssetId": "asset-panorama-cbc3e533-fa51-411b-9b28-b70bc3ff4202",
+      "panoramaAssetId": "asset-panorama-4d1817cb-d729-4a70-8b13-d857941d4106",
       "initialView": {
-        "yaw": 49.957992115460506,
-        "pitch": -12.423844227972468,
+        "yaw": 0,
+        "pitch": 0,
         "fov": 75
       },
-      "hotspots": [
-        {
-          "id": "hotspot-aa22f990-7603-484c-838c-b2955e985186",
-          "type": "navigation",
-          "label": "Lab",
-          "position": {
-            "yaw": 36,
-            "pitch": -25
-          },
-          "iconSize": 44,
-          "targetSceneId": "scene-0fd24cfa-f315-49f2-98dd-0a7bd966390f"
-        }
-      ]
+      "hotspots": []
     }
   ],
   "floorplans": [],
@@ -177,6 +169,6 @@
     "hotspotStyle": "circle"
   },
   "settings": {
-    "startSceneId": "scene-c3afa601-50d4-4ae4-bad0-b07b7e9ff219"
+    "startSceneId": "scene-8f1b1474-dc39-45fe-bc35-2a96be1013b3"
   }
 }
