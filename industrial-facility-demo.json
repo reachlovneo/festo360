@@ -3,22 +3,17 @@
   "id": "sample-industrial-tour",
   "name": "Industrial Facility Demo",
   "createdAt": "2026-07-16T00:00:00.000Z",
-  "updatedAt": "2026-07-31T09:31:38.186Z",
+  "updatedAt": "2026-08-13T01:47:53.282Z",
   "areas": [
     {
       "id": "area-entrance",
-      "name": "Festo Innovation LAB",
+      "name": "metalab",
       "description": "Visitor entry and orientation."
     },
     {
       "id": "area-warehouse",
-      "name": "Samsung House",
+      "name": "WarehouseTV",
       "description": "Storage and dispatch zones."
-    },
-    {
-      "id": "area-laboratory",
-      "name": "Laboratory",
-      "description": "Testing and equipment areas."
     }
   ],
   "assets": [
@@ -41,141 +36,111 @@
       "relativePath": "images/lab.jpg"
     },
     {
-      "id": "asset-panorama-a35d6a30-5c6c-4ce5-8775-449818d12921",
+      "id": "asset-panorama-a4726ae2-0386-4e8d-a063-dd2eeeb009e2",
       "name": "photo360 vr.JPG",
       "kind": "panorama",
-      "relativePath": "assets/asset-panorama-a35d6a30-5c6c-4ce5-8775-449818d12921-photo360 vr.JPG",
+      "relativePath": "assets/asset-panorama-a4726ae2-0386-4e8d-a063-dd2eeeb009e2-photo360 vr.JPG",
       "mimeType": "image/jpeg",
       "sizeBytes": 5375973
     },
     {
-      "id": "asset-object-14920989-a867-4df5-a23a-e591a4a8cbe8",
+      "id": "asset-panorama-a88969ca-2d34-4cb4-85f8-762fcafb901b",
+      "name": "Samsung.png",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-a88969ca-2d34-4cb4-85f8-762fcafb901b-Samsung.png",
+      "mimeType": "image/png",
+      "sizeBytes": 2141379
+    },
+    {
+      "id": "asset-object-a2f3feb9-c39d-4375-bee8-a8289b7fca1e",
       "name": "oculus_quest_3.glb",
       "kind": "object",
-      "relativePath": "assets/asset-object-14920989-a867-4df5-a23a-e591a4a8cbe8-oculus_quest_3.glb",
+      "relativePath": "assets/asset-object-a2f3feb9-c39d-4375-bee8-a8289b7fca1e-oculus_quest_3.glb",
       "mimeType": "application/octet-stream",
       "sizeBytes": 6911188
     },
     {
-      "id": "asset-object-dd261704-a876-469f-96b0-401f70f85ee6",
+      "id": "asset-object-bc3d17e9-0dfa-4e38-8300-742b1d585208",
       "name": "qled-tv-exploded (3).glb",
       "kind": "object",
-      "relativePath": "assets/asset-object-dd261704-a876-469f-96b0-401f70f85ee6-qled-tv-exploded (3).glb",
+      "relativePath": "assets/asset-object-bc3d17e9-0dfa-4e38-8300-742b1d585208-qled-tv-exploded (3).glb",
       "mimeType": "application/octet-stream",
       "sizeBytes": 374680
-    },
-    {
-      "id": "asset-panorama-1fcd6510-ad93-4f5c-9f6e-291d94f21bc7",
-      "name": "Samsung.png",
-      "kind": "panorama",
-      "relativePath": "assets/asset-panorama-1fcd6510-ad93-4f5c-9f6e-291d94f21bc7-Samsung.png",
-      "mimeType": "image/png",
-      "sizeBytes": 2141379
     }
   ],
   "scenes": [
     {
-      "id": "scene-ef73a879-c168-4936-8f4b-ae3d9238dd33",
+      "id": "scene-ac479c6a-f88a-463d-b6d3-0a83ecb4a26c",
       "name": "photo360 vr",
       "areaId": "area-entrance",
-      "panoramaAssetId": "asset-panorama-a35d6a30-5c6c-4ce5-8775-449818d12921",
+      "panoramaAssetId": "asset-panorama-a4726ae2-0386-4e8d-a063-dd2eeeb009e2",
       "initialView": {
-        "yaw": 23.909328704188145,
-        "pitch": 4.045394656441874,
+        "yaw": -150.81184501416254,
+        "pitch": -0.46424696840248675,
         "fov": 75
       },
       "hotspots": [
         {
-          "id": "hotspot-2fb1f232-a525-413b-b04b-00cb68860888",
-          "type": "info",
-          "label": "Meta VR",
-          "title": "Meta VR",
-          "description": "Meta quest 3 VR headset 2025 model",
-          "position": {
-            "yaw": -142,
-            "pitch": -9
-          },
-          "iconSize": 24,
-          "aiFacts": [
-            "This is the Meta Quest 3, an advanced virtual reality headset designed for immersive 3D experiences.",
-            "It features high-resolution displays, improved graphics and clear pancake lenses for sharper visuals.",
-            "Its colour passthrough cameras allow users to combine virtual objects with the real environment.",
-            "The wireless controllers and accurate hand tracking make interaction smooth and natural.",
-            "It can be used for gaming, training, virtual tours, product demonstrations and educational experiences."
-          ],
-          "objectAssetId": "asset-object-14920989-a867-4df5-a23a-e591a4a8cbe8",
-          "iconColor": "#6ed0dd"
-        },
-        {
-          "id": "hotspot-a9951e8d-8504-4c08-afbf-f3ebf16de1d2",
-          "type": "object",
-          "label": "qled-tv-exploded (3)",
-          "title": "qled-tv-exploded (3)",
-          "description": "",
-          "assetId": "asset-object-dd261704-a876-469f-96b0-401f70f85ee6",
-          "position": {
-            "yaw": 98,
-            "pitch": 8
-          },
-          "iconSize": 24,
-          "aiFacts": [
-            "this is samsung tv"
-          ]
-        },
-        {
-          "id": "hotspot-fbe09f77-a6d8-49c7-959d-438518f69330",
+          "id": "hotspot-7b54c9da-8cca-4d14-a558-769c1badc054",
           "type": "text",
           "label": "Wall text",
           "text": "Festo",
-          "subtitle": "Innovation LAB",
-          "textSize": 68,
+          "subtitle": "Meta Lab 360",
+          "textSize": 56,
           "textColor": "#60a5fa",
           "textAlign": "center",
           "position": {
-            "yaw": 180,
-            "pitch": 5
+            "yaw": -173.41043786962328,
+            "pitch": 2.706979869656906
           },
           "iconSize": 44,
           "labelMode": "hidden"
         },
         {
-          "id": "hotspot-45d14af6-6df8-4a1c-8e6f-cb1cc59fc3d1",
-          "type": "navigation",
-          "label": "Samsung Home",
+          "id": "hotspot-fa2ca948-0a18-4048-9404-f851364bace1",
+          "type": "info",
+          "label": "Information",
+          "title": "Information",
+          "description": "Add a short visitor note for this point of interest.",
           "position": {
-            "yaw": -59,
-            "pitch": -6
+            "yaw": -141,
+            "pitch": -10
           },
-          "iconSize": 30,
-          "targetSceneId": "scene-21969157-6eb9-4d72-8b39-101ada7cc8f1",
-          "iconName": "pin"
+          "iconSize": 24,
+          "objectAssetId": "asset-object-a2f3feb9-c39d-4375-bee8-a8289b7fca1e",
+          "aiFacts": [
+            "this is moeta"
+          ]
+        },
+        {
+          "id": "hotspot-fe644ea0-eb66-4ec9-95de-0f5f9bb2b323",
+          "type": "object",
+          "label": "qled-tv-exploded (3)",
+          "title": "qled-tv-exploded (3)",
+          "description": "",
+          "assetId": "asset-object-bc3d17e9-0dfa-4e38-8300-742b1d585208",
+          "position": {
+            "yaw": 138,
+            "pitch": -13
+          },
+          "iconSize": 24,
+          "aiFacts": [
+            "this is tv"
+          ]
         }
       ]
     },
     {
-      "id": "scene-21969157-6eb9-4d72-8b39-101ada7cc8f1",
+      "id": "scene-c78548f6-d5bc-4bd0-915e-c87ca3f776c3",
       "name": "Samsung",
       "areaId": "area-warehouse",
-      "panoramaAssetId": "asset-panorama-1fcd6510-ad93-4f5c-9f6e-291d94f21bc7",
+      "panoramaAssetId": "asset-panorama-a88969ca-2d34-4cb4-85f8-762fcafb901b",
       "initialView": {
-        "yaw": 109.84293807180921,
-        "pitch": -8.87887100331723,
+        "yaw": 0,
+        "pitch": 0,
         "fov": 75
       },
-      "hotspots": [
-        {
-          "id": "hotspot-692e11de-bc06-4f5f-a8a7-457a37c2a6fd",
-          "type": "navigation",
-          "label": "Samsung House",
-          "position": {
-            "yaw": 147,
-            "pitch": -21
-          },
-          "iconSize": 44,
-          "targetSceneId": "scene-ef73a879-c168-4936-8f4b-ae3d9238dd33",
-          "iconName": "pin"
-        }
-      ]
+      "hotspots": []
     }
   ],
   "floorplans": [],
@@ -185,7 +150,18 @@
     "accentColor": "#f59e0b",
     "hotspotStyle": "circle"
   },
+  "welcomePage": {
+    "enabled": false,
+    "themeId": "minimal",
+    "title": "",
+    "subtitle": "",
+    "buttonLabel": "Enter Tour"
+  },
+  "siteMap": {
+    "mode": "auto",
+    "themeId": "blueprint"
+  },
   "settings": {
-    "startSceneId": "scene-ef73a879-c168-4936-8f4b-ae3d9238dd33"
+    "startSceneId": "scene-ac479c6a-f88a-463d-b6d3-0a83ecb4a26c"
   }
 }
