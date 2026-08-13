@@ -1,0 +1,56 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The repo only ever holds a placeholder firebase-config.js (see that file's own comment).
+      # The real values live in the FIREBASE_CONFIG_JS repository secret and are written into a
+      # throwaway staged copy here - never back into the checked-out working tree that git tracks,
+      # so they never end up in a commit or in this workflow's own diff/history.
+      - name: Stage site with real Firebase config
+        env:
+          FIREBASE_CONFIG_JS: ${{ secrets.FIREBASE_CONFIG_JS }}
+        run: |
+          mkdir -p _site
+          shopt -s dotglob
+          for item in *; do
+            [ "$item" = "_site" ] && continue
+            cp -r "$item" _site/
+          done
+          rm -rf _site/.git _site/.github
+          if [ -n "$FIREBASE_CONFIG_JS" ] && [ -f _site/vr-sync-plugin/src/firebase-config.js ]; then
+            printf '%s' "$FIREBASE_CONFIG_JS" > _site/vr-sync-plugin/src/firebase-config.js
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
