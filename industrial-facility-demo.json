@@ -3,16 +3,16 @@
   "id": "sample-industrial-tour",
   "name": "Industrial Facility Demo",
   "createdAt": "2026-07-16T00:00:00.000Z",
-  "updatedAt": "2026-08-13T16:35:18.189Z",
+  "updatedAt": "2026-08-19T16:17:57.131Z",
   "areas": [
     {
       "id": "area-entrance",
-      "name": "MetaLab",
+      "name": "Entrance",
       "description": "Visitor entry and orientation."
     },
     {
       "id": "area-warehouse",
-      "name": "Floor 1",
+      "name": "Warehouse",
       "description": "Storage and dispatch zones."
     },
     {
@@ -41,140 +41,46 @@
       "relativePath": "images/lab.jpg"
     },
     {
-      "id": "asset-panorama-55d4ceea-f9aa-4f90-9645-a15c6fdab873",
+      "id": "asset-panorama-e86a907a-cf0e-4669-97a5-2b3a01b8a94b",
       "name": "photo360 vr.JPG",
       "kind": "panorama",
-      "relativePath": "assets/asset-panorama-55d4ceea-f9aa-4f90-9645-a15c6fdab873-photo360 vr.JPG",
+      "relativePath": "assets/asset-panorama-e86a907a-cf0e-4669-97a5-2b3a01b8a94b-photo360 vr.JPG",
       "mimeType": "image/jpeg",
       "sizeBytes": 5375973
     },
     {
-      "id": "asset-object-29eb8b97-532c-4e5b-821f-ea5c7ce0c890",
-      "name": "oculus_quest_3.glb",
-      "kind": "object",
-      "relativePath": "assets/asset-object-29eb8b97-532c-4e5b-821f-ea5c7ce0c890-oculus_quest_3.glb",
-      "mimeType": "application/octet-stream",
-      "sizeBytes": 6911188
-    },
-    {
-      "id": "asset-object-67b8a05e-bc5b-43b1-a9c5-daa226f889a2",
+      "id": "asset-object-1e9e84b1-ada3-4928-ba15-625658135432",
       "name": "qled-tv-exploded (3).glb",
       "kind": "object",
-      "relativePath": "assets/asset-object-67b8a05e-bc5b-43b1-a9c5-daa226f889a2-qled-tv-exploded (3).glb",
+      "relativePath": "assets/asset-object-1e9e84b1-ada3-4928-ba15-625658135432-qled-tv-exploded (3).glb",
       "mimeType": "application/octet-stream",
       "sizeBytes": 374680
-    },
-    {
-      "id": "asset-object-bddcba36-d3b4-4c74-92b8-16e10e9efa74",
-      "name": "qled-tv-exploded (3).glb",
-      "kind": "object",
-      "relativePath": "assets/asset-object-bddcba36-d3b4-4c74-92b8-16e10e9efa74-qled-tv-exploded (3).glb",
-      "mimeType": "application/octet-stream",
-      "sizeBytes": 374680
-    },
-    {
-      "id": "asset-panorama-915f3033-8117-41bd-8109-274ae68bd346",
-      "name": "floor1.JPG",
-      "kind": "panorama",
-      "relativePath": "assets/asset-panorama-915f3033-8117-41bd-8109-274ae68bd346-floor1.JPG",
-      "mimeType": "image/jpeg",
-      "sizeBytes": 6145761
     }
   ],
   "scenes": [
     {
-      "id": "scene-f9c7e1d0-b133-4a70-a61f-b905ade87b65",
+      "id": "scene-75f7dca6-c59a-45b0-a52e-c4fa717c492e",
       "name": "photo360 vr",
       "areaId": "area-entrance",
-      "panoramaAssetId": "asset-panorama-55d4ceea-f9aa-4f90-9645-a15c6fdab873",
+      "panoramaAssetId": "asset-panorama-e86a907a-cf0e-4669-97a5-2b3a01b8a94b",
       "initialView": {
-        "yaw": -96.68874081610522,
-        "pitch": -9.738276506131463,
+        "yaw": -168.15689398922652,
+        "pitch": -2.2922543812852076,
         "fov": 75
       },
       "hotspots": [
         {
-          "id": "hotspot-8af64b75-5aea-4ff6-bd3e-77cbf1d92056",
-          "type": "info",
-          "label": "Meta",
-          "title": "Meta",
-          "description": "Add a short visitor note for this point of interest.",
-          "position": {
-            "yaw": -140,
-            "pitch": -9
-          },
-          "iconSize": 24,
-          "objectAssetId": "asset-object-29eb8b97-532c-4e5b-821f-ea5c7ce0c890",
-          "aiFacts": [
-            "this is my meta"
-          ],
-          "iconColor": "#8ab9e5"
-        },
-        {
-          "id": "hotspot-6574adf5-0f76-4c68-935f-fd86b0f063c1",
+          "id": "hotspot-2de2a6ac-6fbd-494e-8198-0225c9e8b2b0",
           "type": "object",
-          "label": "TV",
-          "title": "Samsung TV",
+          "label": "qled-tv-exploded (3)",
+          "title": "qled-tv-exploded (3)",
           "description": "",
-          "assetId": "asset-object-bddcba36-d3b4-4c74-92b8-16e10e9efa74",
+          "assetId": "asset-object-1e9e84b1-ada3-4928-ba15-625658135432",
           "position": {
-            "yaw": 92,
-            "pitch": 8
+            "yaw": -143,
+            "pitch": -7
           },
-          "iconSize": 24
-        },
-        {
-          "id": "hotspot-96f9d468-1f73-44d1-8f1c-e2efc43fcd17",
-          "type": "text",
-          "label": "Wall text",
-          "text": "Festo",
-          "subtitle": "Meta Lab 360",
-          "textSize": 56,
-          "textColor": "#60a5fa",
-          "textAlign": "center",
-          "position": {
-            "yaw": 180,
-            "pitch": 6
-          },
-          "iconSize": 44,
-          "labelMode": "hidden"
-        },
-        {
-          "id": "hotspot-f27c4cdc-f504-4c09-8efe-637664f24d7d",
-          "type": "navigation",
-          "label": "Go to Hall",
-          "position": {
-            "yaw": -59,
-            "pitch": -6
-          },
-          "iconSize": 24,
-          "targetSceneId": "scene-f9c7e1d0-b133-4a70-a61f-b905ade87b65",
-          "iconName": "pin"
-        }
-      ]
-    },
-    {
-      "id": "scene-b6d1af92-108c-48ce-88eb-854d2600b1cf",
-      "name": "floor1",
-      "areaId": "area-warehouse",
-      "panoramaAssetId": "asset-panorama-915f3033-8117-41bd-8109-274ae68bd346",
-      "initialView": {
-        "yaw": 0,
-        "pitch": 0,
-        "fov": 75
-      },
-      "hotspots": [
-        {
-          "id": "hotspot-ace730c9-add5-4a10-bcd3-5963f03f28a2",
-          "type": "navigation",
-          "label": "photo360 vr",
-          "position": {
-            "yaw": -67,
-            "pitch": -13
-          },
-          "iconSize": 24,
-          "targetSceneId": "scene-f9c7e1d0-b133-4a70-a61f-b905ade87b65",
-          "iconName": "pin"
+          "iconSize": 44
         }
       ]
     }
@@ -198,6 +104,6 @@
     "themeId": "blueprint"
   },
   "settings": {
-    "startSceneId": "scene-f9c7e1d0-b133-4a70-a61f-b905ade87b65"
+    "startSceneId": "scene-75f7dca6-c59a-45b0-a52e-c4fa717c492e"
   }
 }
