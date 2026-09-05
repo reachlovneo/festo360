@@ -3,22 +3,12 @@
   "id": "sample-industrial-tour",
   "name": "Industrial Facility Demo",
   "createdAt": "2026-07-16T00:00:00.000Z",
-  "updatedAt": "2026-08-19T16:17:57.131Z",
+  "updatedAt": "2026-09-05T01:23:21.482Z",
   "areas": [
     {
       "id": "area-entrance",
       "name": "Entrance",
       "description": "Visitor entry and orientation."
-    },
-    {
-      "id": "area-warehouse",
-      "name": "Warehouse",
-      "description": "Storage and dispatch zones."
-    },
-    {
-      "id": "area-laboratory",
-      "name": "Laboratory",
-      "description": "Testing and equipment areas."
     }
   ],
   "assets": [
@@ -41,46 +31,60 @@
       "relativePath": "images/lab.jpg"
     },
     {
-      "id": "asset-panorama-e86a907a-cf0e-4669-97a5-2b3a01b8a94b",
-      "name": "photo360 vr.JPG",
+      "id": "asset-panorama-d625fc75-e4c2-4969-aeb3-75ced698562e",
+      "name": "floor1.JPG",
       "kind": "panorama",
-      "relativePath": "assets/asset-panorama-e86a907a-cf0e-4669-97a5-2b3a01b8a94b-photo360 vr.JPG",
+      "relativePath": "assets/asset-panorama-d625fc75-e4c2-4969-aeb3-75ced698562e-floor1.JPG",
       "mimeType": "image/jpeg",
-      "sizeBytes": 5375973
+      "sizeBytes": 6145761
     },
     {
-      "id": "asset-object-1e9e84b1-ada3-4928-ba15-625658135432",
-      "name": "qled-tv-exploded (3).glb",
-      "kind": "object",
-      "relativePath": "assets/asset-object-1e9e84b1-ada3-4928-ba15-625658135432-qled-tv-exploded (3).glb",
-      "mimeType": "application/octet-stream",
-      "sizeBytes": 374680
+      "id": "asset-panorama-d76a23bd-9149-4858-8725-95c23140fe90",
+      "name": "photo360 vr.JPG",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-d76a23bd-9149-4858-8725-95c23140fe90-photo360 vr.JPG",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 5375973
     }
   ],
   "scenes": [
     {
-      "id": "scene-75f7dca6-c59a-45b0-a52e-c4fa717c492e",
+      "id": "scene-c2dd62fc-5dfd-4c70-8441-7cb2e00f24e7",
+      "name": "floor1",
+      "areaId": "area-entrance",
+      "panoramaAssetId": "asset-panorama-d625fc75-e4c2-4969-aeb3-75ced698562e",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0,
+        "fov": 75
+      },
+      "hotspots": []
+    },
+    {
+      "id": "scene-a71305a5-dfd4-47dc-a153-dfd7560fb3e1",
       "name": "photo360 vr",
       "areaId": "area-entrance",
-      "panoramaAssetId": "asset-panorama-e86a907a-cf0e-4669-97a5-2b3a01b8a94b",
+      "panoramaAssetId": "asset-panorama-d76a23bd-9149-4858-8725-95c23140fe90",
       "initialView": {
-        "yaw": -168.15689398922652,
-        "pitch": -2.2922543812852076,
+        "yaw": 125.91942261386441,
+        "pitch": -7.6562058744502215,
         "fov": 75
       },
       "hotspots": [
         {
-          "id": "hotspot-2de2a6ac-6fbd-494e-8198-0225c9e8b2b0",
-          "type": "object",
-          "label": "qled-tv-exploded (3)",
-          "title": "qled-tv-exploded (3)",
-          "description": "",
-          "assetId": "asset-object-1e9e84b1-ada3-4928-ba15-625658135432",
+          "id": "hotspot-7dd9f980-16e0-4ae7-88d2-ab3a55252079",
+          "type": "info",
+          "label": "Information",
+          "title": "Information",
+          "description": "Add a short visitor note for this point of interest.",
           "position": {
-            "yaw": -143,
-            "pitch": -7
+            "yaw": 13,
+            "pitch": -14
           },
-          "iconSize": 44
+          "iconSize": 24,
+          "aiFacts": [
+            "thsi is test"
+          ]
         }
       ]
     }
@@ -103,7 +107,12 @@
     "mode": "auto",
     "themeId": "blueprint"
   },
+  "training": {
+    "enabled": false,
+    "tourButtonLabel": "Explore Tour",
+    "trainingButtonLabel": "Start Training"
+  },
   "settings": {
-    "startSceneId": "scene-75f7dca6-c59a-45b0-a52e-c4fa717c492e"
+    "startSceneId": "scene-a71305a5-dfd4-47dc-a153-dfd7560fb3e1"
   }
 }
