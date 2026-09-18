@@ -1,11 +1,13 @@
-// Stage 1 (test & tune): hand-edit this file after exporting, before uploading/serving the tour.
-// Nothing else in this plugin needs to change to try a different key, prompt, model, or voice.
+// Template for config.js - copy this file to config.js (same folder) and fill in your own
+// apiKey there. config.js is gitignored (see .gitignore) specifically so a real key never gets
+// committed; this example file is the one that's actually tracked.
 //
 // apiKey        - your own Gemini API key (https://aistudio.google.com/apikey). Billed to your
-//                 own account; this file ships in plain text inside the exported site, so treat
-//                 it like any other secret checked into a public deploy - fine for this test/tune
-//                 stage on a device you control, not yet meant for a public production rollout
-//                 (that's stage 2: a proper in-browser setup flow instead of a baked-in file).
+//                 own account; the real config.js ships in plain text inside the exported site,
+//                 so treat it like any other secret checked into a public deploy - fine for this
+//                 test/tune stage on a device you control, not yet meant for a public production
+//                 rollout (that's stage 2: a proper in-browser setup flow instead of a baked-in
+//                 file).
 // systemPrompt  - the assistant's persona/instructions. Keep it short and explicitly ask for
 //                 spoken, conversational answers - LLMs default to writing like a document
 //                 (bullet points, long paragraphs), which sounds stilted read aloud.
@@ -27,7 +29,7 @@
 // voiceName     - one of the Live API's prebuilt voice names (e.g. "Puck", "Charon", "Kore",
 //                 "Fenrir", "Aoede" as of this writing - check current docs for the full list).
 export const AI_BOT_CONFIG = {
-  apiKey: "AQ.Ab8RN6I4Z-Zh5I7Vd6pJRzhWPVYIoKcFN_W1CTY7O2eJ2GFBtw",
+  apiKey: "",
   systemPrompt: "You are a friendly, concise voice assistant for a virtual facility tour. Answer in short, natural spoken sentences, not lists or long paragraphs.",
   model: "models/gemini-2.5-flash-native-audio-preview-12-2025",
   voiceName: "Puck",

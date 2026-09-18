@@ -35,11 +35,29 @@ function stateEqual(a, b) {
   );
 }
 
+// A plain requestAnimationFrame loop is commonly throttled or stalled by the browser once a real
+// immersive-VR session takes over frame pacing (confirmed as why toggling full screen on the host
+// stopped reaching a real headset viewer, while working fine in desktop-VR, which never opens a
+// real XR session). window.__vrSyncFrameCallbacks (exported tours built with this fix) ties the
+// tick to the app's own render loop instead, which is correctly paced in every mode. Falls back to
+// a plain rAF loop for older exports that don't expose it yet.
+function registerFrameTick(callback) {
+  if (window.__vrSyncFrameCallbacks) {
+    window.__vrSyncFrameCallbacks.push(callback);
+    return function() {
+      const index = window.__vrSyncFrameCallbacks.indexOf(callback);
+      if (index !== -1) window.__vrSyncFrameCallbacks.splice(index, 1);
+    };
+  }
+  let raf = requestAnimationFrame(function loop() { callback(); raf = requestAnimationFrame(loop); });
+  return function() { cancelAnimationFrame(raf); };
+}
+
 export class ModelSync {
   constructor(firebaseSync) {
     this.sync = firebaseSync;
     this._hostTimer = null;
-    this._viewerRaf = null;
+    this._unregisterTick = null;
     this._viewerUnsubscribe = null;
     this._target = null;
   }
@@ -65,7 +83,7 @@ export class ModelSync {
     this._viewerUnsubscribe = this.sync.onLive(sessionId, "model", (state) => {
       this._target = state;
     });
-    const tick = () => {
+    this._unregisterTick = registerFrameTick(() => {
       const hooks = currentStageHooks();
       if (hooks && this._target) {
         const current = hooks.getState();
@@ -77,14 +95,12 @@ export class ModelSync {
         hooks.setExploded(this._target.exploded);
         hooks.setFullscreen(this._target.fullscreen);
       }
-      this._viewerRaf = requestAnimationFrame(tick);
-    };
-    tick();
+    });
   }
 
   stopViewer() {
-    if (this._viewerRaf) cancelAnimationFrame(this._viewerRaf);
-    this._viewerRaf = null;
+    if (this._unregisterTick) this._unregisterTick();
+    this._unregisterTick = null;
     if (this._viewerUnsubscribe) this._viewerUnsubscribe();
   }
 }

@@ -2,13 +2,24 @@
 // the Gemini Live API's realtimeInput.audio expects. Uses ScriptProcessorNode rather than
 // AudioWorkletNode - deprecated, but needs no separate worklet module file to vendor/load, and
 // works uniformly across the older/embedded browsers a VR headset is likely to ship.
+// RMS amplitude above this (0-1 scale) counts as "speaking" - well above a quiet room's noise
+// floor (typically under 0.005-0.01 on a laptop mic) but comfortably below normal speech
+// (~0.02-0.15). SILENCE_CHUNKS_TO_CONFIRM at ~93ms/chunk means ~5 chunks (~460ms) of continuous
+// quiet before declaring the user has stopped talking - long enough to ride out a normal pause
+// between words/sentences without flickering the UI, short enough to feel responsive.
+const SPEECH_RMS_THRESHOLD = 0.02;
+const SILENCE_CHUNKS_TO_CONFIRM = 5;
+
 export class MicCapture {
-  constructor({ onChunk }) {
+  constructor({ onChunk, onVoiceActivity }) {
     this.onChunk = onChunk;
+    this.onVoiceActivity = onVoiceActivity || (() => {});
     this.stream = null;
     this.audioContext = null;
     this.sourceNode = null;
     this.processorNode = null;
+    this.isSpeaking = false;
+    this.silenceChunkCount = 0;
   }
 
   async start() {
@@ -20,6 +31,7 @@ export class MicCapture {
     this.processorNode = this.audioContext.createScriptProcessor(4096, 1, 1);
     this.processorNode.onaudioprocess = (event) => {
       const inputSamples = event.inputBuffer.getChannelData(0);
+      this.updateVoiceActivity(inputSamples);
       const pcm16 = downsampleTo16kHzPcm16(inputSamples, this.audioContext.sampleRate);
       this.onChunk(pcm16ToBase64(pcm16));
     };
@@ -42,6 +54,32 @@ export class MicCapture {
     this.sourceNode = null;
     this.stream = null;
     this.audioContext = null;
+    this.isSpeaking = false;
+    this.silenceChunkCount = 0;
+  }
+
+  // Purely a client-side UX signal (drives the "Listening.../Thinking..." status text) - the
+  // Live API does its own, independent, more accurate voice-activity detection server-side to
+  // decide when a turn has actually ended. This one only needs to be good enough to feel
+  // responsive, not perfectly correct.
+  updateVoiceActivity(float32Samples) {
+    let sumSquares = 0;
+    for (let i = 0; i < float32Samples.length; i++) sumSquares += float32Samples[i] * float32Samples[i];
+    const rms = Math.sqrt(sumSquares / float32Samples.length);
+
+    if (rms >= SPEECH_RMS_THRESHOLD) {
+      this.silenceChunkCount = 0;
+      if (!this.isSpeaking) { this.isSpeaking = true; this.onVoiceActivity(true); }
+      return;
+    }
+
+    if (this.isSpeaking) {
+      this.silenceChunkCount++;
+      if (this.silenceChunkCount >= SILENCE_CHUNKS_TO_CONFIRM) {
+        this.isSpeaking = false;
+        this.onVoiceActivity(false);
+      }
+    }
   }
 }
 

@@ -6,7 +6,7 @@
 //   - audio up:   { realtimeInput: { audio: { data: base64Pcm16kHz, mimeType: "audio/pcm;rate=16000" } } }
 //   - audio down: serverContent.modelTurn.parts[].inlineData.data (base64 PCM, 24kHz)
 export class GeminiLiveClient {
-  constructor({ apiKey, model, systemPrompt, voiceName, onAudioChunk, onError, onOpen, onClose }) {
+  constructor({ apiKey, model, systemPrompt, voiceName, onAudioChunk, onError, onOpen, onClose, onTurnStart }) {
     this.apiKey = apiKey;
     this.model = model;
     this.systemPrompt = systemPrompt;
@@ -15,6 +15,11 @@ export class GeminiLiveClient {
     this.onError = onError || (() => {});
     this.onOpen = onOpen || (() => {});
     this.onClose = onClose || (() => {});
+    // Fires on the first message of a new model turn, audio or not - a defensive extra signal
+    // for the UI to show "Thinking..." the instant the server starts responding, in case a
+    // future model/config still produces a text part before audio despite thinkingBudget: 0.
+    this.onTurnStart = onTurnStart || (() => {});
+    this.isTurnActive = false;
     this.socket = null;
     this.isSetupComplete = false;
     this.pendingAudioChunks = [];
@@ -28,9 +33,25 @@ export class GeminiLiveClient {
       this.socket.send(JSON.stringify({
         setup: {
           model: this.model,
-          responseModalities: ["AUDIO"],
+          // responseModalities/speechConfig MUST be nested under generationConfig - confirmed
+          // empirically against the live API on 2026-09-05: sending them as top-level setup
+          // fields (as one of Google's own doc pages showed) gets rejected with "Invalid JSON
+          // payload received. Unknown name 'responseModalities' at 'setup'." and the socket
+          // closes immediately, which is why the assistant used to hang on "Connecting..."
+          // forever with no visible error.
+          generationConfig: {
+            responseModalities: ["AUDIO"],
+            speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: this.voiceName } } },
+            // Extended "thinking" is built for multi-step reasoning tasks, not quick spoken
+            // facility Q&A - confirmed via a direct test that this model does an internal
+            // reasoning pass by default (visible as a text part before any audio), which adds
+            // real latency for no benefit here. thinkingBudget: 0 disables it. Also confirmed
+            // this field name/nesting empirically (2026-09-05) the same way generationConfig
+            // itself was - a top-level "thinkingConfig" under setup gets rejected the same way
+            // top-level responseModalities did.
+            thinkingConfig: { thinkingBudget: 0 },
+          },
           systemInstruction: { parts: [{ text: this.systemPrompt }] },
-          speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: this.voiceName } } },
         },
       }));
     });
@@ -48,10 +69,14 @@ export class GeminiLiveClient {
       }
 
       const parts = message.serverContent && message.serverContent.modelTurn && message.serverContent.modelTurn.parts;
-      if (parts) {
+      if (parts && parts.length > 0) {
+        if (!this.isTurnActive) { this.isTurnActive = true; this.onTurnStart(); }
         parts.forEach((part) => {
           if (part.inlineData && part.inlineData.data) this.onAudioChunk(part.inlineData.data);
         });
+      }
+      if (message.serverContent && message.serverContent.turnComplete) {
+        this.isTurnActive = false;
       }
     });
 
@@ -59,9 +84,13 @@ export class GeminiLiveClient {
       this.onError(new Error("Gemini Live connection error - check the API key and model in ai-bot-plugin/src/config.js"));
     });
 
-    this.socket.addEventListener("close", () => {
+    this.socket.addEventListener("close", (event) => {
+      const wasSetupComplete = this.isSetupComplete;
       this.isSetupComplete = false;
-      this.onClose();
+      // event.reason carries the server's own explanation for an abnormal close (e.g. a
+      // malformed setup message) - surfacing it is what turns "stuck on Connecting forever"
+      // into an actual diagnosable error instead of silence.
+      this.onClose(!wasSetupComplete && event.reason ? event.reason : null);
     });
   }
 

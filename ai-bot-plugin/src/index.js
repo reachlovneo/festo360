@@ -4,21 +4,22 @@
 //     // AiBot is also on window.AiBot, which is what standaloneTourPlayer.ts's core script
 //     // checks for before adding the "Talk to AI Assistant" menu entry - see the comment there.
 //   </script>
-// Owns its own small status/stop UI, injected into the page here rather than in the core
-// exported script, so the entire feature - including its on-screen presence - disappears
-// cleanly if this folder is removed from an export.
+// Pure session orchestration - the status/stop UI lives in StatusPanel.js, the same split
+// vr-sync-plugin uses between VRSync.js (logic) and its own bootstrap-built badge (UI).
 import { AI_BOT_CONFIG } from "./config.js";
 import { MicCapture } from "./MicCapture.js";
 import { AudioPlayback } from "./AudioPlayback.js";
 import { GeminiLiveClient } from "./GeminiLiveClient.js";
+import { StatusPanel } from "./StatusPanel.js";
 
 class AiBotController {
   constructor() {
     this.client = null;
     this.mic = null;
     this.playback = null;
-    this.panel = null;
-    this.statusText = null;
+    this.panel = new StatusPanel({ onStop: () => this.stop() });
+    this.isStopping = false;
+    this.isBotSpeaking = false;
     this.observeVrExit();
   }
 
@@ -41,19 +42,24 @@ class AiBotController {
     if (this.client) return; // already running
 
     if (!AI_BOT_CONFIG.apiKey) {
-      this.ensurePanel();
-      this.setStatus("No API key set - edit ai-bot-plugin/src/config.js", true);
+      this.panel.show();
+      this.panel.setStatus("No API key set - edit ai-bot-plugin/src/config.js", "error");
       return;
     }
 
-    this.ensurePanel();
-    this.panel.hidden = false;
-    this.setStatus("Connecting...");
+    this.panel.show();
+    this.panel.setStatus("Connecting...", "connecting");
+    this.isBotSpeaking = false;
 
+    // Status flow: Listening (mic picking up speech) -> Thinking (client-side voice-activity
+    // detection noticed you went quiet, response not back yet) -> Speaking (audio actually
+    // playing) -> back to Listening. Playback state always wins over the mic's own guess, since
+    // it's ground truth for whether the bot is actually making sound.
     this.playback = new AudioPlayback();
     this.playback.onSpeakingChange = (isSpeaking) => {
-      if (isSpeaking) this.setStatus("Speaking...");
-      else if (this.client) this.setStatus("Listening...");
+      this.isBotSpeaking = isSpeaking;
+      if (isSpeaking) this.panel.setStatus("Speaking...", "speaking");
+      else if (this.client) this.panel.setStatus("Listening...", "listening");
     };
 
     this.client = new GeminiLiveClient({
@@ -62,49 +68,54 @@ class AiBotController {
       systemPrompt: AI_BOT_CONFIG.systemPrompt,
       voiceName: AI_BOT_CONFIG.voiceName,
       onAudioChunk: (base64Pcm) => this.playback.enqueueBase64Pcm24kHz(base64Pcm),
+      // Extra safety net for "Thinking..." in case a future model/config produces any non-audio
+      // content before its first audio chunk despite thinkingBudget: 0 - onSpeakingChange above
+      // will immediately supersede this the moment real audio actually starts.
+      onTurnStart: () => { if (!this.isBotSpeaking) this.panel.setStatus("Thinking...", "thinking"); },
       onOpen: async () => {
-        this.setStatus("Listening...");
+        this.panel.setStatus("Listening...", "listening");
         try {
-          this.mic = new MicCapture({ onChunk: (base64Pcm) => this.client && this.client.sendAudioChunk(base64Pcm) });
+          this.mic = new MicCapture({
+            onChunk: (base64Pcm) => this.client && this.client.sendAudioChunk(base64Pcm),
+            onVoiceActivity: (isSpeakingNow) => {
+              if (this.isBotSpeaking) return; // playback is ground truth while the bot is talking
+              this.panel.setStatus(isSpeakingNow ? "Listening..." : "Thinking...", isSpeakingNow ? "listening" : "thinking");
+            },
+          });
           await this.mic.start();
         } catch (err) {
-          this.setStatus("Microphone access denied or unavailable", true);
-          this.stop();
+          this.panel.setStatus("Microphone access denied or unavailable", "error");
+          this.teardown();
         }
       },
-      onError: (err) => { this.setStatus(err.message || "Connection error", true); },
-      onClose: () => { this.stop(); },
+      onError: (err) => { this.panel.setStatus(err.message || "Connection error", "error"); },
+      onClose: (reason) => {
+        // A close the user didn't ask for (clicking "End" sets isStopping first) means
+        // something went wrong server-side - show it instead of silently vanishing, which is
+        // exactly what made an earlier setup-message bug look like an unexplained hang.
+        if (!this.isStopping) this.panel.setStatus(reason || "Disconnected", "error");
+        this.teardown();
+      },
     });
     this.client.connect();
   }
 
+  // User-initiated: full stop, panel hides immediately, no need to explain anything.
   stop() {
+    this.isStopping = true;
+    this.teardown();
+    this.panel.hide();
+    this.isStopping = false;
+  }
+
+  // Resource cleanup only - does not touch the panel or status text, so an unexpected close's
+  // error message (set by the onClose handler above) stays visible until the visitor dismisses
+  // it with the End button.
+  teardown() {
     if (this.mic) { this.mic.stop(); this.mic = null; }
     if (this.playback) { this.playback.stop(); this.playback = null; }
     if (this.client) { this.client.close(); this.client = null; }
-    if (this.panel) this.panel.hidden = true;
-  }
-
-  ensurePanel() {
-    if (this.panel) return;
-    this.panel = document.createElement("div");
-    this.panel.hidden = true;
-    this.panel.style.cssText = "align-items:center;background:rgba(15,23,32,.86);border-radius:999px;bottom:18px;color:#fff;display:flex;font:13px/1.4 system-ui;gap:10px;left:18px;padding:9px 10px 9px 16px;position:fixed;z-index:99999;";
-    this.statusText = document.createElement("span");
-    this.panel.appendChild(this.statusText);
-    const stopButton = document.createElement("button");
-    stopButton.type = "button";
-    stopButton.textContent = "End";
-    stopButton.style.cssText = "background:rgba(239,68,68,.9);border:0;border-radius:999px;color:#fff;cursor:pointer;font:inherit;font-weight:700;padding:5px 12px;";
-    stopButton.addEventListener("click", () => this.stop());
-    this.panel.appendChild(stopButton);
-    document.body.appendChild(this.panel);
-  }
-
-  setStatus(text, isError) {
-    if (!this.statusText) return;
-    this.statusText.textContent = text;
-    this.statusText.style.color = isError ? "#fca5a5" : "#fff";
+    this.isBotSpeaking = false;
   }
 }
 

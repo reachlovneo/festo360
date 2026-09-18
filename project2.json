@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "id": "project-7c2f00bb-3b35-4dab-a0e9-5ca338109aa9",
+  "name": "project2",
+  "createdAt": "2026-09-12T03:56:08.011Z",
+  "updatedAt": "2026-09-16T06:11:58.207Z",
+  "areas": [
+    {
+      "id": "area-0ba8abff-d22a-4b18-b667-e79dbd400dc0",
+      "name": "General"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene-3c16ffdf-decb-4897-b65b-8a935b7b870c",
+      "name": "ChatGPT Image Sep 11, 2026, 11_57_23 AM",
+      "areaId": "area-0ba8abff-d22a-4b18-b667-e79dbd400dc0",
+      "panoramaAssetId": "asset-panorama-267bc549-d651-49f7-a9f1-929189465367",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0,
+        "fov": 75
+      },
+      "hotspots": [
+        {
+          "id": "hotspot-d4cabe9d-7337-4445-823c-9814f2405045",
+          "type": "object",
+          "label": "qled-tv-exploded (3)",
+          "title": "qled-tv-exploded (3)",
+          "description": "",
+          "assetId": "asset-object-94d2cd3a-40af-48c6-ac3a-5181c042aec2",
+          "position": {
+            "yaw": -96,
+            "pitch": -18
+          },
+          "iconSize": 24
+        },
+        {
+          "id": "hotspot-07b92554-0bf4-4fe3-8630-4ccbe7a020bd",
+          "type": "navigation",
+          "label": "photo360 vr",
+          "position": {
+            "yaw": -1,
+            "pitch": -15
+          },
+          "iconSize": 26,
+          "targetSceneId": "scene-fa8ef657-f20d-4c9b-87a1-bde63f06ed8c",
+          "navigationStyle": "move",
+          "iconName": "arrow-up"
+        }
+      ]
+    },
+    {
+      "id": "scene-fa8ef657-f20d-4c9b-87a1-bde63f06ed8c",
+      "name": "photo360 vr",
+      "areaId": "area-0ba8abff-d22a-4b18-b667-e79dbd400dc0",
+      "panoramaAssetId": "asset-panorama-964dbfb8-b39e-4361-bdca-4ef068f93689",
+      "initialView": {
+        "yaw": -11.588215413088866,
+        "pitch": -19.55565058021192,
+        "fov": 75
+      },
+      "hotspots": [
+        {
+          "id": "hotspot-fba2300c-1d73-48bb-baba-eecfa0d3713f",
+          "type": "navigation",
+          "label": "ChatGPT Image Sep 11, 2026, 11_57_23 AM",
+          "position": {
+            "yaw": 14,
+            "pitch": -10
+          },
+          "iconSize": 44,
+          "targetSceneId": "scene-3c16ffdf-decb-4897-b65b-8a935b7b870c"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-panorama-8a09068b-3d68-48d9-be91-0c6df30a879a",
+      "name": "timothy-oldfield-luufnHoChRU-unsplash.jpg",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-8a09068b-3d68-48d9-be91-0c6df30a879a-timothy-oldfield-luufnHoChRU-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 1185780
+    },
+    {
+      "id": "asset-panorama-4d14dd52-09be-4cba-94d9-a25804cc5b7d",
+      "name": "asset-panorama-b20645a2-83f6-4b82-a16b-d88243dace65-timothy-oldfield-luufnHoChRU-unsplash.jpg",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-4d14dd52-09be-4cba-94d9-a25804cc5b7d-asset-panorama-b20645a2-83f6-4b82-a16b-d88243dace65-timothy-oldfield-luufnHoChRU-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 1185780
+    },
+    {
+      "id": "asset-panorama-12242b01-a409-4c3f-ae94-67e4de8f15ce",
+      "name": "asset-panorama-b20645a2-83f6-4b82-a16b-d88243dace65-timothy-oldfield-luufnHoChRU-unsplash.jpg",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-12242b01-a409-4c3f-ae94-67e4de8f15ce-asset-panorama-b20645a2-83f6-4b82-a16b-d88243dace65-timothy-oldfield-luufnHoChRU-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 1185780
+    },
+    {
+      "id": "asset-panorama-c6a69f04-03f0-4953-8241-de1f947fb1ba",
+      "name": "photo360 vr.JPG",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-c6a69f04-03f0-4953-8241-de1f947fb1ba-photo360_vr.JPG",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 5375973
+    },
+    {
+      "id": "asset-object-4a70fbcf-ae44-4f49-8935-626faace83aa",
+      "name": "qled-tv-exploded (3).glb",
+      "kind": "object",
+      "relativePath": "assets/asset-object-4a70fbcf-ae44-4f49-8935-626faace83aa-qled-tv-exploded__3_.glb",
+      "mimeType": "application/octet-stream",
+      "sizeBytes": 374680
+    },
+    {
+      "id": "asset-panorama-82ee433e-fa51-4491-bc55-3639f9961060",
+      "name": "photo360 vr.JPG",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-82ee433e-fa51-4491-bc55-3639f9961060-photo360_vr.JPG",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 5375973
+    },
+    {
+      "id": "asset-object-1a8de1b4-592a-4684-8457-bf6732176b9f",
+      "name": "qled-tv-exploded (3).glb",
+      "kind": "object",
+      "relativePath": "assets/asset-object-1a8de1b4-592a-4684-8457-bf6732176b9f-qled-tv-exploded__3_.glb",
+      "mimeType": "application/octet-stream",
+      "sizeBytes": 374680
+    },
+    {
+      "id": "asset-panorama-267bc549-d651-49f7-a9f1-929189465367",
+      "name": "ChatGPT Image Sep 11, 2026, 11_57_23 AM.png",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-267bc549-d651-49f7-a9f1-929189465367-ChatGPT Image Sep 11, 2026, 11_57_23 AM.png",
+      "mimeType": "image/png",
+      "sizeBytes": 2226133
+    },
+    {
+      "id": "asset-object-94d2cd3a-40af-48c6-ac3a-5181c042aec2",
+      "name": "qled-tv-exploded (3).glb",
+      "kind": "object",
+      "relativePath": "assets/asset-object-94d2cd3a-40af-48c6-ac3a-5181c042aec2-qled-tv-exploded (3).glb",
+      "mimeType": "application/octet-stream",
+      "sizeBytes": 374680
+    },
+    {
+      "id": "asset-panorama-964dbfb8-b39e-4361-bdca-4ef068f93689",
+      "name": "photo360 vr.JPG",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-964dbfb8-b39e-4361-bdca-4ef068f93689-photo360 vr.JPG",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 5375973
+    }
+  ],
+  "floorplans": [],
+  "theme": {
+    "primaryColor": "#0f766e",
+    "secondaryColor": "#334155",
+    "accentColor": "#f59e0b",
+    "hotspotStyle": "circle"
+  },
+  "welcomePage": {
+    "enabled": false,
+    "themeId": "minimal",
+    "title": "",
+    "subtitle": "",
+    "buttonLabel": "Enter Tour"
+  },
+  "siteMap": {
+    "mode": "auto",
+    "themeId": "blueprint"
+  },
+  "training": {
+    "enabled": false,
+    "tourButtonLabel": "Explore Tour",
+    "trainingButtonLabel": "Start Training"
+  },
+  "aiBot": {
+    "enabled": false,
+    "apiKey": "AQ.Ab8RN6I4Z-Zh5I7Vd6pJRzhWPVYIoKcFN_W1CTY7O2eJ2GFBtw",
+    "systemPrompt": "You are a friendly, concise voice assistant for a virtual facility tour. Answer in short, natural spoken sentences, not lists or long paragraphs.",
+    "model": "models/gemini-2.5-flash-native-audio-preview-12-2025",
+    "voiceName": "Puck"
+  },
+  "vrHud": {
+    "side": "right",
+    "height": "center"
+  },
+  "settings": {
+    "startSceneId": "scene-fa8ef657-f20d-4c9b-87a1-bde63f06ed8c"
+  }
+}

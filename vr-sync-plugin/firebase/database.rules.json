@@ -1,0 +1,42 @@
+{
+  "rules": {
+    "sessions": {
+      "$sessionId": {
+        ".read": "auth != null",
+        ".write": "auth != null",
+
+        ".validate": "newData.hasChildren(['hostId', 'createdAt', 'expiresAt'])",
+
+        "hostId": {
+          ".validate": "newData.isString()"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "expiresAt": {
+          ".validate": "newData.isNumber() && newData.val() <= now + 43200000"
+        },
+
+        "viewers": {
+          "$viewerId": {
+            ".validate": "newData.isBoolean()"
+          }
+        },
+
+        "actions": {
+          "$actionId": {
+            ".validate": "newData.hasChildren(['type', 'ts']) && root.child('sessions').child($sessionId).child('expiresAt').val() > now"
+          }
+        },
+
+        "state": {
+          ".validate": "root.child('sessions').child($sessionId).child('expiresAt').val() > now"
+        },
+
+        "live": {
+          ".validate": "root.child('sessions').child($sessionId).child('expiresAt').val() > now"
+        }
+      }
+    }
+  }
+}
