@@ -182,7 +182,7 @@
   },
   "aiBot": {
     "enabled": false,
-    "apiKey": "AQ.Ab8RN6I4Z-Zh5I7Vd6pJRzhWPVYIoKcFN_W1CTY7O2eJ2GFBtw",
+    "apiKey": "REPLACED_AT_DEPLOY_TIME",
     "systemPrompt": "You are a friendly, concise voice assistant for a virtual facility tour. Answer in short, natural spoken sentences, not lists or long paragraphs.",
     "model": "models/gemini-2.5-flash-native-audio-preview-12-2025",
     "voiceName": "Puck"

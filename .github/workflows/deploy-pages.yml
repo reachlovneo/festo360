@@ -24,13 +24,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # The repo only ever holds a placeholder firebase-config.js (see that file's own comment).
-      # The real values live in the FIREBASE_CONFIG_JS repository secret and are written into a
-      # throwaway staged copy here - never back into the checked-out working tree that git tracks,
-      # so they never end up in a commit or in this workflow's own diff/history.
-      - name: Stage site with real Firebase config
+      # The repo only ever holds placeholder firebase-config.js / ai-bot-plugin config.js files
+      # (see each file's own comment). The real values live in repository secrets and are written
+      # into a throwaway staged copy here - never back into the checked-out working tree that git
+      # tracks, so they never end up in a commit or in this workflow's own diff/history. This is
+      # specifically what keeps a real Gemini API key out of GitHub's commit-content secret
+      # scanning, which auto-revokes any key it finds committed to a public repo within minutes.
+      - name: Stage site with real secrets
         env:
           FIREBASE_CONFIG_JS: ${{ secrets.FIREBASE_CONFIG_JS }}
+          AI_BOT_CONFIG_JS: ${{ secrets.AI_BOT_CONFIG_JS }}
         run: |
           mkdir -p _site
           shopt -s dotglob
@@ -41,6 +44,9 @@ jobs:
           rm -rf _site/.git _site/.github
           if [ -n "$FIREBASE_CONFIG_JS" ] && [ -f _site/vr-sync-plugin/src/firebase-config.js ]; then
             printf '%s' "$FIREBASE_CONFIG_JS" > _site/vr-sync-plugin/src/firebase-config.js
+          fi
+          if [ -n "$AI_BOT_CONFIG_JS" ] && [ -f _site/ai-bot-plugin/src/config.js ]; then
+            printf '%s' "$AI_BOT_CONFIG_JS" > _site/ai-bot-plugin/src/config.js
           fi
 
       - name: Setup Pages
