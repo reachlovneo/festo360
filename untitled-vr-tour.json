@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "id": "project-2c6e0e40-7bb1-4594-b70c-0c0b7bea7f85",
+  "name": "Untitled VR Tour",
+  "createdAt": "2026-09-18T01:24:24.401Z",
+  "updatedAt": "2026-09-18T17:07:16.127Z",
+  "areas": [
+    {
+      "id": "area-16fa8d51-61bf-4ef9-85c6-da05761dc296",
+      "name": "General"
+    },
+    {
+      "id": "area-c6c9210e-95ac-49e6-b5f9-ce323ef55000",
+      "name": "Area 2"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene-787a3256-c08b-4d89-858a-d5b8aac5ffd5",
+      "name": "photo360 vr",
+      "areaId": "area-16fa8d51-61bf-4ef9-85c6-da05761dc296",
+      "panoramaAssetId": "asset-panorama-7051d54d-0345-4320-8169-95e9b921ffff",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0,
+        "fov": 75
+      },
+      "hotspots": [
+        {
+          "id": "hotspot-62a53515-1ce9-4754-9c8c-6baca7375367",
+          "type": "object",
+          "label": "qled-tv-exploded (3)",
+          "title": "qled-tv-exploded (3)",
+          "description": "",
+          "assetId": "asset-object-6ad78e9d-9dfa-425f-9764-1e4c52e6b501",
+          "position": {
+            "yaw": -17,
+            "pitch": -5
+          },
+          "iconSize": 26
+        },
+        {
+          "id": "hotspot-0d559b1a-ce3e-4e28-83ed-1b5124267195",
+          "type": "navigation",
+          "label": "Navigation",
+          "position": {
+            "yaw": 11,
+            "pitch": -16
+          },
+          "iconSize": 24,
+          "targetSceneId": "scene-185fa897-7919-4c55-a017-e3074a82740d",
+          "iconName": "pin",
+          "navigationStyle": "jump"
+        }
+      ]
+    },
+    {
+      "id": "scene-185fa897-7919-4c55-a017-e3074a82740d",
+      "name": "floor1",
+      "areaId": "area-c6c9210e-95ac-49e6-b5f9-ce323ef55000",
+      "panoramaAssetId": "asset-panorama-178d5241-cd2e-43de-90d3-d4ebe52dd09e",
+      "initialView": {
+        "yaw": 0,
+        "pitch": 0,
+        "fov": 75
+      },
+      "hotspots": []
+    }
+  ],
+  "assets": [
+    {
+      "id": "asset-panorama-741588a8-b712-4568-8fbe-669f9f0cdc1c",
+      "name": "Generated Panorama 1",
+      "kind": "panorama",
+      "relativePath": "images/generated-panorama-1.jpg"
+    },
+    {
+      "id": "asset-panorama-14feabcb-5f36-4991-bc5a-6abb73e28629",
+      "name": "education-university-workshop-360.jpg",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-14feabcb-5f36-4991-bc5a-6abb73e28629-education-university-workshop-360.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 40761775
+    },
+    {
+      "id": "asset-panorama-7051d54d-0345-4320-8169-95e9b921ffff",
+      "name": "photo360 vr.JPG",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-7051d54d-0345-4320-8169-95e9b921ffff-photo360 vr.JPG",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 5375973
+    },
+    {
+      "id": "asset-object-6ad78e9d-9dfa-425f-9764-1e4c52e6b501",
+      "name": "qled-tv-exploded (3).glb",
+      "kind": "object",
+      "relativePath": "assets/asset-object-6ad78e9d-9dfa-425f-9764-1e4c52e6b501-qled-tv-exploded (3).glb",
+      "mimeType": "application/octet-stream",
+      "sizeBytes": 374680
+    },
+    {
+      "id": "asset-panorama-178d5241-cd2e-43de-90d3-d4ebe52dd09e",
+      "name": "floor1.JPG",
+      "kind": "panorama",
+      "relativePath": "assets/asset-panorama-178d5241-cd2e-43de-90d3-d4ebe52dd09e-floor1.JPG",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 6145761
+    }
+  ],
+  "floorplans": [],
+  "theme": {
+    "primaryColor": "#18181b",
+    "secondaryColor": "#334155",
+    "accentColor": "#f59e0b",
+    "hotspotStyle": "circle"
+  },
+  "welcomePage": {
+    "enabled": false,
+    "themeId": "minimal",
+    "title": "",
+    "subtitle": "",
+    "buttonLabel": "Enter Tour"
+  },
+  "siteMap": {
+    "mode": "auto",
+    "themeId": "blueprint"
+  },
+  "training": {
+    "enabled": false,
+    "tourButtonLabel": "Explore Tour",
+    "trainingButtonLabel": "Start Training"
+  },
+  "aiBot": {
+    "enabled": true,
+    "apiKey": "REPLACED_AT_DEPLOY_TIME",
+    "systemPrompt": "You are a friendly, concise voice assistant for a virtual facility tour. Answer in short, natural spoken sentences, not lists or long paragraphs.",
+    "model": "models/gemini-2.5-flash-native-audio-preview-12-2025",
+    "voiceName": "Puck"
+  },
+  "vrHud": {
+    "side": "right",
+    "height": "center"
+  },
+  "settings": {
+    "startSceneId": "scene-787a3256-c08b-4d89-858a-d5b8aac5ffd5"
+  }
+}

@@ -50,7 +50,13 @@ export class StatusPanel {
     stopButton.style.cssText = "background:rgba(239,68,68,.9);border:0;border-radius:999px;color:#fff;cursor:pointer;font:inherit;font-weight:700;padding:5px 12px;";
     stopButton.addEventListener("click", () => this.onStop());
     this.element.appendChild(stopButton);
-    document.body.appendChild(this.element);
+    // #xrOverlay is the WebXR domOverlay root the core player sets up for real immersive VR
+    // sessions (see standaloneTourPlayer.ts) - everything that renders correctly while in VR
+    // (header, map panel, the AI toggle itself) lives inside it. Appending here instead of
+    // document.body was the actual cause of this panel not being visible/composited correctly
+    // once a session was started from inside VR - falls back to document.body outside an export
+    // (e.g. this file loaded standalone) where #xrOverlay doesn't exist.
+    (document.querySelector("#xrOverlay") || document.body).appendChild(this.element);
   }
 
   injectStyles() {
